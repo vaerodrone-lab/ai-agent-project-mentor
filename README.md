@@ -1,62 +1,83 @@
-# SMART PARKING SYSTEM: KHO DỰ ÁN & HỆ THỐNG MENTORING CÙNG AI AGENT
+# NỀN TẢNG MENTORING ĐỒ ÁN VÀ KHUNG PHƯƠNG PHÁP LUẬN CỘNG TÁC AI TRONG NGHIÊN CỨU KỸ THUẬT
+*(Engineering Mentorship Platform & Agentic AI Research Framework)*
 
-> **Kho lưu trữ nghiên cứu, học tập và hướng dẫn làm đồ án IoT bằng AI Agent (Google Antigravity 2.0).**  
-> Dự án: **Hệ thống bãi đỗ xe thông minh ứng dụng cảm biến khoảng cách và vi điều khiển ESP32.**
-
----
-
-## 🎯 Triết Lý: "Chỉ Cho Cần Câu Chứ Không Cho Con Cá"
-Dự án này không nhằm mục đích làm hộ đồ án cho sinh viên, mà là một **môi trường huấn luyện tư duy kỹ thuật và phương pháp làm việc cùng AI Agent**. Sinh viên sẽ trực tiếp làm chủ hệ thống, rèn luyện kỹ năng phân tích giải thuật, chẩn đoán phần cứng và tự tin bảo vệ đồ án trước hội đồng.
+> **Đơn vị phát triển:** Vaerodrone Lab  
+> **Repository:** `vaerodrone-lab/ai-agent-project-mentor`  
+> **Phạm vi ứng dụng:** Đào tạo phương pháp luận nghiên cứu, phát triển đồ án kỹ thuật liên ngành (IoT / Hệ thống nhúng) và chuẩn hóa mô hình cộng tác cùng AI Agent (Google Antigravity 2.0).
 
 ---
 
-## 📂 Cấu Trúc Kho Lưu Trữ Chuẩn Hóa
+## 🎯 Định Hướng Đào Tạo & Nguyên Tắc Phương Pháp Luận
+
+Kho lưu trữ được xây dựng nhằm thiết lập **môi trường đào tạo năng lực tự chủ kỹ thuật và phương pháp giải quyết vấn đề khoa học cho người học**. Hệ thống chuẩn hóa mô hình tương tác cùng trí tuệ nhân tạo thế hệ mới (Agentic AI) dựa trên các nguyên tắc cốt lõi:
+
+1. **Phát triển năng lực tự chủ (Autonomous Competency Development):**  
+   Chuyển đổi từ mô hình tiếp nhận giải pháp thụ động sang mô hình cộng tác tư duy chủ động (*Co-thinking & Verification*). Người học trực tiếp làm chủ kiến trúc hệ thống, phân tích bản chất vật lý của linh kiện, giải mã lưu đồ thuật toán và thực chứng trên mô hình thực nghiệm.
+
+2. **Chuẩn hóa quy trình kỹ thuật & Quản trị tri thức (Knowledge Management & Traceability):**  
+   Mọi giai đoạn nghiên cứu, chẩn đoán sự cố phần cứng/phần mềm và trích xuất kinh nghiệm thực tế đều được văn bản hóa có cấu trúc và quản lý phiên bản nghiêm ngặt thông qua Git.
+
+3. **Mô hình hóa khung phương pháp luận đa dự án (Cross-Project Reusability):**  
+   Cung cấp cấu trúc phương pháp luận độc lập (`ai_agent_methodology/`), có khả năng mở rộng và áp dụng nhất quán cho các đồ án chuyên ngành và đề tài nghiên cứu tiếp theo.
+
+---
+
+## 📂 Kiến Trúc Hệ Thống Kho Lưu Trữ
 
 ```
 ai-agent-project-mentor/
-├── README.md                                # Tài liệu tổng quan & hướng dẫn bắt đầu
+├── AGENTS.md                                # Quy tắc nền tảng tự động nạp cho Antigravity 2.0
+├── README.md                                # Tài liệu tổng quan kiến trúc và hướng dẫn vận hành
 │
-├── agent_rules/                             # BỘ NGUYÊN TẮC HOẠT ĐỘNG DÀNH CHO CÁC AGENT
-│   ├── 01_CORE_OPERATING_PRINCIPLES.md      # Triết lý "Cho cần câu", phương pháp Socratic gợi mở
-│   ├── 02_KNOWLEDGE_LOGGING_AND_GIT_SYNC.md # Quy định ghi chép nhật ký & tự động đồng bộ GitHub
-│   ├── 03_MULTI_AGENT_HANDOVER_PROTOCOL.md  # Giao thức bàn giao và tiếp nối giữa các Agent
-│   └── MASTER_AGENT_PROMPT.md               # Mẫu Prompt khởi tạo Agent dùng cho mọi phiên chat mới
+├── 🧠 ai_agent_methodology/                 # KHUNG PHƯƠNG PHÁP LUẬN DÙNG CHUNG CHO MỌI ĐỀ TÀI
+│   ├── README.md                            # Tổng quan khung phương pháp luận
+│   ├── 01_AI_COLLABORATION_MINDSET.md       # Tư duy cộng tác: Mô hình đối tác tư duy (Co-thinker)
+│   ├── 02_PROMPT_ENGINEERING_FOR_STUDENTS.md   # Kỹ thuật xây dựng câu lệnh kỹ thuật chuẩn CTCO
+│   ├── 03_ANTIGRAVITY_2.0_MASTERY_GUIDE.md    # Hướng dẫn khai thác môi trường lập trình tự hành
+│   ├── 04_DEBUGGING_WITH_AI.md              # Phương pháp luận chẩn đoán lỗi 4 tầng (Vật lý - Logic)
+│   ├── 05_EXAM_DEFENSE_PREPARATION.md       # Phương pháp mô phỏng phản biện và bảo vệ đồ án
+│   └── TEMPLATES/                           # Hệ thống mẫu câu lệnh kỹ thuật chuẩn hóa
+│       ├── MASTER_AGENT_INITIALIZE.md       # Prompt khởi tạo Agent đồng bộ ngữ cảnh
+│       ├── HARDWARE_DEBUG_PROMPT.md         # Prompt chẩn đoán mạch điện và hiện tượng sụt áp
+│       └── CODE_EXPLANATION_PROMPT.md       # Prompt phân tích bản chất giải thuật và mã nguồn
 │
-├── docs/                                    # KHO TRI THỨC NỀN TẢNG & KINH NGHIỆM THỰC CHIẾN
-│   ├── 01_AI_MINDSET_GUIDE.md               # Tư duy & Phương pháp làm việc hiệu quả với AI
-│   ├── 02_ANTIGRAVITY_AGENT_GUIDE.md        # Hướng dẫn sử dụng Google Antigravity 2.0
-│   ├── 03_SMART_PARKING_A_TO_Z.md           # Bản chất kỹ thuật hệ thống bãi xe (5 tầng tư duy)
-│   ├── EXPERIENCE_KNOWLEDGE_BASE.md         # Kho kinh nghiệm xử lý lỗi thực chiến (5 lỗi kinh điển)
-│   └── Huong_Dan_Hieu_Ban_Chat_He_Thong_A_Z.pdf # Bản PDF in ấn đẹp, trực quan
+├── 📜 agent_rules/                          # BỘ QUY CHUẨN VẬN HÀNH CỦA HỆ THỐNG AGENT
+│   ├── 01_CORE_OPERATING_PRINCIPLES.md      # Nguyên tắc sư phạm gợi mở (Socratic Method)
+│   ├── 02_KNOWLEDGE_LOGGING_AND_GIT_SYNC.md   # Tiêu chuẩn số hóa tri thức và đồng bộ hóa Git
+│   └── 03_MULTI_AGENT_HANDOVER_PROTOCOL.md    # Giao thức bàn giao phiên nghiên cứu giữa các Agent
 │
-├── firmware/                                # MÃ NGUỒN VÀ ĐẤU NỐI PHẦN CỨNG
-│   ├── it.ino                               # Code C++ nạp trên ESP32 (Web Server + FSM)
-│   └── WIRING_PINOUT.md                     # Bảng tra cứu chân GPIO & an toàn nguồn
-│
-├── agent_workspace/                         # KHÔNG GIAN TƯƠNG TÁC CHO AGENT TRÊN MÁY MENTEE
-│   ├── AGENT_INSTRUCTIONS.md                # Bộ quy tắc bắt buộc cho Agent khi chạy trên máy
-│   ├── PROJECT_CONTEXT.md                   # Bối cảnh hiện trạng, bug tracking & roadmap
-│   └── WORK_LOG.md                          # Nhật ký tiến độ nghiên cứu & làm việc liên tục
-│
-└── assets/                                  # HÌNH ẢNH SA BÀN THỰC ĐỊA
-    └── prototype.jpg                        # Ảnh thực tế mô hình bãi đỗ xe
+└── 🚗 projects/                             # KHÔNG GIAN DỰ ÁN THỰC NGHIỆM
+    └── smart_parking/                       # Đề tài: Hệ thống Bãi đỗ xe thông minh (ESP32 & IR)
+        ├── docs/                            # Đặc tả kỹ thuật, cẩm nang phân tích A-Z & kho kinh nghiệm
+        │   ├── SMART_PARKING_A_TO_Z.md
+        │   ├── EXPERIENCE_KNOWLEDGE_BASE.md
+        │   └── Huong_Dan_Hieu_Ban_Chat_He_Thong_A_Z.pdf
+        ├── firmware/                        # Mã nguồn nhúng (C++) và bảng sơ đồ chân tín hiệu
+        │   ├── it.ino
+        │   └── WIRING_PINOUT.md
+        ├── assets/                          # Bản vẽ và hình ảnh sa bàn thực nghiệm
+        │   └── prototype.jpg
+        └── workspace/                       # Không gian quản trị tiến độ và nhật ký riêng của đề tài
+            ├── PROJECT_CONTEXT.md
+            ├── WORK_LOG.md
+            └── AGENT_INSTRUCTIONS.md
 ```
 
 ---
 
-## 🚀 Hướng Dẫn Khởi Tạo Nhanh Cho Mentee (Trong 3 Bước)
+## 🚀 Quy Trình Khởi Động Dành Cho Người Học (Mentee)
 
-1. **Bước 1: Mở thư mục dự án trên Google Antigravity**
-   * Mở Antigravity trên laptop &rarr; `File` &rarr; `Open Folder` &rarr; Chọn thư mục `ai-agent-project-mentor`.
-2. **Bước 2: Kích hoạt Agent bằng Mẫu Prompt Chuẩn**
-   * Mở file `agent_rules/MASTER_AGENT_PROMPT.md`, copy toàn bộ nội dung và dán vào khung chat của Antigravity.
-   * Agent sẽ tự động đọc các nguyên tắc, đồng bộ lịch sử và hướng dẫn bạn bước tiếp theo.
-3. **Bước 3: Tự động ghi chép nhật ký & Đồng bộ Git**
-   * Sau mỗi buổi làm việc cùng Mentor hoặc tự học với Agent, Agent sẽ tự động ghi chép vào `agent_workspace/WORK_LOG.md` và hướng dẫn bạn đẩy code lên GitHub repo.
+1. **Bước 1: Khởi động Workspace trên Google Antigravity**
+   * Khởi chạy Antigravity &rarr; Chọn `File` &rarr; `Open Folder` &rarr; Trỏ đến thư mục `ai-agent-project-mentor`.
+   * Antigravity sẽ tự động kích hoạt tệp quy tắc nền tảng `AGENTS.md`.
+2. **Bước 2: Đồng bộ Ngữ cảnh Phiên làm việc**
+   * Sao chép nội dung từ `ai_agent_methodology/TEMPLATES/MASTER_AGENT_INITIALIZE.md` và gửi vào giao diện trò chuyện với Agent để thiết lập ngữ cảnh cho phiên nghiên cứu.
+3. **Bước 3: Ghi nhận Lịch sử và Đồng bộ Git**
+   * Kết thúc mỗi phiên làm việc, Agent có trách nhiệm hỗ trợ cập nhật kết quả vào `projects/smart_parking/workspace/WORK_LOG.md` và hướng dẫn thực hiện đồng bộ hóa lên GitHub repository.
 
 ---
 
-## 👥 Ban Cố Vấn & Hướng Dẫn
-* **Mentor / Giảng viên:** Cố vấn trực tiếp phương pháp tư duy và dẫn dắt thực hành.
-* **AI Agent:** Google Antigravity (Gemini) – Trợ lý kỹ thuật 24/7.
-* **Mentee:** Nguyễn Trần Mai Uyên – Sinh viên thực hiện.
+## 👥 Cơ Cấu Phân Nhiệm & Tham Gia Dự Án
+* **Mentor phụ trách:** Cố vấn phương pháp luận nghiên cứu, định hướng kiến trúc kỹ thuật và giám sát thực nghiệm.
+* **AI Agent Trợ lý:** Google Antigravity (Gemini) – Hỗ trợ phân tích kỹ thuật, truy vấn tài liệu và đề xuất phương án giải quyết sự cố 24/7.
+* **Người học (Mentee):** Trực tiếp nghiên cứu, thực nghiệm trên phần cứng, phân tích mã nguồn và làm chủ toàn diện hệ thống.

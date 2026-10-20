@@ -1,60 +1,60 @@
-# KHO DỮ KIỆN KINH NGHIỆM & BÀI HỌC THỰC CHIẾN IOT (EXPERIENCE KNOWLEDGE BASE)
-> *Nơi tích lũy toàn bộ các "bệnh thực địa", bài học xương máu và giải pháp dứt điểm để các Agent và Mentee tái sử dụng cho các dự án sau này.*
+# KHO DỮ KIỆN KINH NGHIỆM & BÀI HỌC THỰC NGHIỆM IOT (EXPERIENCE KNOWLEDGE BASE)
+> *Nơi tích lũy toàn bộ các sự cố kỹ thuật thực tế, phân tích nguyên nhân gốc rễ và giải pháp chuẩn hóa nhằm phục vụ tra cứu và tái sử dụng cho các dự án kỹ thuật liên quan.*
 
 ---
 
-##  কার্ড CARD 01: LỖI SỤT ÁP NGUỒN (BROWNOUT RESET) DO ĐỘNG CƠ SERVO
-* **Hiện tượng:** Khi nạp code vào ESP32, màn hình LCD sáng, nhưng cứ hễ đến lúc barie bắt đầu quay là ESP32 bị sập nguồn, khởi động lại liên tục (vòng lặp reset vô tận).
-* **Bản chất kỹ thuật:** Động cơ Servo MG90S khi bắt đầu khởi động hoặc gặp lực cản cơ học cần dòng điện tức thời lên đến 800mA – 1A (Stall Current). Mạch ổn áp trên chip ESP32 chỉ cấp tối đa khoảng 500mA cho toàn bo. Khi Servo "uống" dòng quá nhanh, điện áp đường 5V/3.3V bị tụt xuống dưới 2.8V, kích hoạt mạch bảo vệ Brownout Detector trong chip ESP32 tự ngắt để bảo vệ bộ nhớ.
-* **Giải pháp chuẩn:**
-  1. Tuyệt đối không cắm chân nguồn dương (+5V) của Servo vào chân 3.3V hoặc chân 5V của cổng nạp USB trên ESP32.
-  2. Cấp nguồn 5V riêng cho Servo từ cổng DC Jack ngoài hoặc module hạ áp buck LM2596/AMS1117.
-  3. Bắt buộc nối chung dây mass (Common Ground) giữa nguồn ngoài và ESP32.
-  4. Hàn thêm một tụ điện hóa 470uF song song giữa chân VCC và GND của Servo để trữ điện đệm dòng lúc đề-pa.
-* **Bài học cho project sau:** Mọi tải cảm kháng (động cơ, rơ-le, còi buzzer công suất lớn) đều phải tách nguồn công suất độc lập với vi điều khiển.
+## 1. THẺ KINH NGHIỆM 01: SỰ CỐ SỤT ÁP NGUỒN (BROWNOUT RESET) DO ĐỘNG CƠ SERVO
+* **Hiện tượng:** Khi nạp chương trình vào ESP32, màn hình LCD hiển thị bình thường, nhưng khi thanh chắn barie bắt đầu chuyển động quay thì ESP32 sập nguồn và khởi động lại liên tục (vòng lặp reset ngắt quãng).
+* **Bản chất kỹ thuật:** Động cơ Servo MG90S khi khởi động hoặc gặp tải cơ học cần dòng điện tức thời lên đến 800mA – 1A (Stall Current). Mạch ổn áp tích hợp trên bo ESP32 chỉ cung cấp tối đa khoảng 500mA cho toàn mạch. Khi dòng tiêu thụ tăng đột biến, điện áp trên đường 5V/3.3V tụt xuống dưới ngưỡng an toàn (2.8V), kích hoạt cơ chế bảo vệ Brownout Detector tích hợp trong chip ESP32 tự ngắt để bảo vệ dữ liệu flash.
+* **Giải pháp kỹ thuật chuẩn hóa:**
+  1. Tách riêng đường nguồn nuôi động cơ: Không cấp nguồn dương (+5V) của Servo từ chân 3.3V hoặc 5V của cổng USB trên bo ESP32.
+  2. Sử dụng nguồn ngoài 5V độc lập từ adapter DC hoặc mạch hạ áp Buck (LM2596 / AMS1117).
+  3. Bắt buộc nối chung chân mass (Common Ground) giữa nguồn nuôi Servo và bo ESP32.
+  4. Mắc song song một tụ điện hóa 470µF – 1000µF giữa chân VCC và GND của Servo để đệm dòng tức thời khi khởi động.
+* **Khuyến nghị kiến trúc:** Mọi tải cảm ứng và cơ cấu chấp hành công suất (động cơ, rơ-le, van điện từ) đều phải sử dụng nguồn động lực riêng biệt với nguồn điều khiển của vi điều khiển.
 
 ---
 
-## কার্ড CARD 02: LỖI CẢM BIẾN FC-51 BÁO ẢO DO PHẢN XẠ SÀN FOMEX TRẮNG
-* **Hiện tượng:** Trên Web và màn hình LCD luôn báo "CẢ 4 Ô ĐÃ CÓ XE" mặc dù trên sa bàn hoàn toàn trống không có xe nào.
+## 2. THẺ KINH NGHIỆM 02: CẢM BIẾN FC-51 BÁO SAI TRẠNG THÁI DO PHẢN XẠ SÀN FOMEX
+* **Hiện tượng:** Trên giao diện Web và màn hình LCD luôn hiển thị trạng thái "CẢ 4 Ô ĐÃ CÓ XE" mặc dù thực tế trên sa bàn hoàn toàn không có phương tiện.
 * **Bản chất kỹ thuật:** 
-  1. Vật liệu sa bàn làm bằng Fomex màu trắng có độ phản xạ tia hồng ngoại cực kỳ cao (~90%).
-  2. Biến trở vi chỉnh trên lưng module FC-51 đang vặn ngưỡng so sánh quá nhạy, khiến chùm tia hồng ngoại chiếu xuống mặt sàn trắng dội ngược lại photodiode thu cũng đủ làm IC LM393 lật mức 0V (LOW = Có xe).
-* **Giải pháp chuẩn:**
-  1. Lấy tuốc-nơ-vít nhỏ vặn biến trở trên từng cảm biến **ngược chiều kim đồng hồ** từ từ cho đến khi đèn LED báo tín hiệu vừa tắt hẳn khi ô trống.
-  2. Đưa mô hình xe vào cự ly 4 – 5 cm, đèn phải sáng lên dứt khoát; rút xe ra đèn phải tắt ngay.
-* **Bài học cho project sau:** Cảm biến quang rất nhạy cảm với màu sắc và bề mặt vật liệu. Luôn phải cân chỉnh ngưỡng so sánh trên môi trường thực tế trước khi chạy chương trình.
+  1. Vật liệu sa bàn là tấm Fomex trắng có hệ số phản xạ tia hồng ngoại cao (~90%).
+  2. Biến trở so sánh trên mô-đun FC-51 được tinh chỉnh ở ngưỡng độ nhạy quá cao, khiến chùm tia hồng ngoại phát ra dội ngược từ mặt sàn trắng vào đầu thu photodiode đủ vượt ngưỡng kích hoạt của IC so sánh LM393, kéo ngõ ra về mức 0V (LOW = Có xe).
+* **Giải pháp kỹ thuật chuẩn hóa:**
+  1. Sử dụng tuốc-nơ-vít xoay biến trở trên lưng từng mô-đun FC-51 **ngược chiều kim đồng hồ** từ từ cho đến khi đèn LED chỉ thị tín hiệu ngắt hoàn toàn khi ô đỗ trống.
+  2. Đặt mô hình phương tiện vào cự ly 4 – 5 cm, quan sát đèn LED chỉ thị bật sáng ổn định; khi rút phương tiện ra đèn phải tắt ngay lập tức.
+* **Khuyến nghị kiến trúc:** Cảm biến quang hồng ngoại phụ thuộc lớn vào bề mặt và màu sắc vật cản. Cần thực hiện quy trình hiệu chuẩn ngưỡng trên môi trường vật lý thực tế trước khi vận hành hệ thống.
 
 ---
 
-## কার্ড CARD 03: LỖI NGƯỢC MỨC LOGIC TRONG CHƯƠNG TRÌNH (#define DETECT)
-* **Hiện tượng:** Khi che tay vào cảm biến thì Web báo "CÒN TRỐNG", khi bỏ tay ra thì Web báo "ĐÃ CÓ XE".
-* **Bản chất kỹ thuật:** Một số lô module cảm biến quang học xuất mức HIGH khi thấy vật cản và LOW khi trống, trong khi code đang mặc định `#define DETECT LOW`.
-* **Giải pháp chuẩn:** Kiểm tra bằng thực nghiệm: nếu trạng thái bị nghịch đảo 100%, chỉ cần đổi trong file code:
+## 3. THẺ KINH NGHIỆM 03: NGHỊCH ĐẢO MỨC LOGIC TRONG CHƯƠNG TRÌNH (#define DETECT)
+* **Hiện tượng:** Khi đặt vật cản vào cảm biến thì hệ thống báo "CÒN TRỐNG", khi rút vật cản ra thì báo "ĐÃ CÓ XE".
+* **Bản chất kỹ thuật:** Tùy thuộc vào thiết kế mạch so sánh của nhà sản xuất, một số dòng mô-đun quang xuất mức HIGH khi phát hiện vật cản và LOW khi không có vật cản, ngược với giả định mức logic ban đầu trong mã nguồn (`#define DETECT LOW`).
+* **Giải pháp kỹ thuật chuẩn hóa:** Xác định mức logic thực tế qua thực nghiệm: nếu trạng thái tín hiệu bị nghịch đảo toàn phần, điều chỉnh định nghĩa tiền xử lý trong mã nguồn:
   ```cpp
-  #define DETECT HIGH  // Thay vì #define DETECT LOW
+  #define DETECT HIGH  // Thay đổi từ LOW sang HIGH tùy theo đặc tính module
   ```
-* **Bài học cho project sau:** Luôn viết một đoạn code test đọc `digitalRead()` in ra Serial Monitor trước khi ghép vào hệ thống lớn để xác định chắc chắn mức logic kích hoạt của cảm biến.
+* **Khuyến nghị kiến trúc:** Trước khi tích hợp cảm biến vào hệ thống lớn, luôn nạp đoạn mã đọc tín hiệu số (`digitalRead`) đơn giản hiển thị ra Serial Monitor để xác định chuẩn mức logic tích cực.
 
 ---
 
-## কার্ড CARD 04: LỖI MÀN HÌNH LCD 1602 HIỆN KHỐI VUÔNG ĐEN
-* **Hiện tượng:** Màn hình LCD sáng đèn nền nhưng chỉ hiện 16 khối vuông đen ở dòng 1, không hiển thị bất kỳ chữ số nào.
+## 4. THẺ KINH NGHIỆM 04: MÀN HÌNH LCD 1602 HIỂN THỊ KHỐI VUÔNG ĐEN
+* **Hiện tượng:** Màn hình LCD sáng đèn nền nhưng chỉ xuất hiện 16 khối vuông đen ở dòng thứ nhất, không hiển thị ký tự dữ liệu.
 * **Bản chất kỹ thuật:** 
-  1. Nguyên nhân 1: Biến trở chỉnh độ tương phản (Contrast) màu xanh dương sau lưng bo I2C chưa được tinh chỉnh đúng mức điện áp.
-  2. Nguyên nhân 2: Module I2C dùng chip PCF8574A có địa chỉ mặc định là `0x3F` nhưng trong code lại khai báo `LiquidCrystal_I2C lcd(0x27, 16, 2)`.
-* **Giải pháp chuẩn:**
-  1. Xoay biến trở sau lưng màn hình từ từ đến khi chữ hiện rõ.
-  2. Nếu không được, nạp chương trình `I2C Scanner` vào ESP32 để quét địa chỉ hex thực tế và cập nhật vào code.
+  1. Nguyên nhân 1: Biến trở vi chỉnh độ tương phản (Contrast) màu xanh phía sau bo I2C chưa được thiết lập đúng mức điện áp phân cực.
+  2. Nguyên nhân 2: Bo chuyển đổi I2C sử dụng chip PCF8574A có địa chỉ mặc định là `0x3F`, trong khi chương trình đang cấu hình địa chỉ mặc định là `0x27`.
+* **Giải pháp kỹ thuật chuẩn hóa:**
+  1. Điều chỉnh nhẹ biến trở tương phản sau lưng màn hình cho đến khi các ký tự hiển thị rõ nét.
+  2. Nạp đoạn mã `I2C Scanner` vào ESP32 để dò tìm địa chỉ hex thực tế trên đường truyền I2C và cập nhật vào dòng lệnh khởi tạo `LiquidCrystal_I2C lcd(address, 16, 2)`.
 
 ---
 
-## কার্ড CARD 05: LỖI ĐIỆN THOẠI KHÔNG TRUY CẬP ĐƯỢC WEB SERVER CỦA ESP32
-* **Hiện tượng:** ESP32 đã kết nối Wi-Fi và có IP, nhưng gõ IP trên điện thoại thì trình duyệt báo lỗi "Không thể kết nối máy chủ" (ERR_CONNECTION_REFUSED).
+## 5. THẺ KINH NGHIỆM 05: KHÔNG KẾT NỐI ĐƯỢC WEB SERVER CỦA ESP32 QUA TRÌNH DUYỆT
+* **Hiện tượng:** Bo ESP32 đã kết nối vào mạng Wi-Fi và nhận địa chỉ IP hợp lệ, nhưng thiết bị di động truy cập địa chỉ IP này thì trình duyệt báo lỗi từ chối kết nối (ERR_CONNECTION_REFUSED hoặc Timeout).
 * **Bản chất kỹ thuật:** 
-  1. Điện thoại đang bật 4G/LTE hoặc đang kết nối mạng Wi-Fi khác băng tần/khác tên với ESP32.
-  2. Router Wi-Fi bật tính năng cách ly thiết bị nội bộ (AP Isolation / Client Isolation) ngăn các máy con giao tiếp với nhau.
-* **Giải pháp chuẩn:**
-  1. Tắt mạng di động 4G trên điện thoại, đảm bảo bắt chung một mạng Wi-Fi 2.4GHz với ESP32.
-  2. Gõ trực tiếp địa chỉ IP (ví dụ: `http://192.168.1.15`), không gõ vào ô tìm kiếm của Google.
-  3. Nếu router chặn, có thể cấu hình ESP32 sang chế độ Access Point (`WiFi.softAP()`) để điện thoại kết nối trực tiếp vào Wi-Fi do ESP32 tự phát ra.
+  1. Thiết bị di động đang ưu tiên sử dụng mạng dữ liệu di động (4G/LTE) hoặc kết nối vào một Access Point/băng tần khác (ví dụ: Wi-Fi 5GHz trong khi ESP32 kết nối Wi-Fi 2.4GHz).
+  2. Điểm truy cập Wi-Fi (Router) đang kích hoạt tính năng cách ly client nội bộ (AP Isolation / Client Isolation), ngăn các thiết bị trong cùng mạng LAN giao tiếp trực tiếp với nhau.
+* **Giải pháp kỹ thuật chuẩn hóa:**
+  1. Tắt mạng dữ liệu di động 4G trên điện thoại, đảm bảo kết nối cùng mạng Wi-Fi băng tần 2.4GHz với ESP32.
+  2. Nhập chính xác giao thức và địa chỉ IP trực tiếp trên thanh địa chỉ của trình duyệt (ví dụ: `http://192.168.1.15`).
+  3. Trong trường hợp hạ tầng mạng hạn chế, cấu hình ESP32 hoạt động ở chế độ Điểm truy cập độc lập (`WiFi.softAP()`) để các thiết bị kết nối trực tiếp vào mạng do ESP32 phát ra.

@@ -1,29 +1,29 @@
-# GIAO THỨC BÀN GIAO VÀ TIẾP QUẢN DỰ ÁN GIỮA CÁC AGENT (MULTI-AGENT PROTOCOL)
-> *Quy định dành cho bất kỳ AI Agent mới nào khi tham gia vào kho lưu trữ này.*
+# GIAO THỨC CHUYỂN GIAO & TIẾP NHẬN DỰ ÁN GIỮA CÁC AGENT (MULTI-AGENT PROTOCOL)
+> *Quy chuẩn vận hành bắt buộc dành cho bất kỳ AI Agent nào khi khởi tạo hoặc tiếp quản phiên làm việc trong repository.*
 
 ---
 
-## 1. QUY TRÌNH 4 BƯỚC KHỞI ĐỘNG CỦA AGENT MỚI (ONBOARDING CHECKLIST)
-Mỗi khi mentee mở một phiên chat mới hoặc một Agent mới được gọi vào workspace, Agent **BẮT BUỘC** phải tự thực hiện 4 bước sau trước khi trả lời câu hỏi đầu tiên của mentee:
+## 1. QUY TRÌNH 4 BƯỚC KHỞI ĐỘNG (ONBOARDING PROTOCOL)
+Khi người học bắt đầu một phiên làm việc mới hoặc triệu hồi một Agent vào workspace, Agent **BẮT BUỘC** thực hiện tuần tự 4 bước sau trước khi phản hồi yêu cầu kỹ thuật đầu tiên:
 
 ```
-  [1. ĐỌC RULES] ───► [2. ĐỌC CONTEXT & LOG] ───► [3. ĐỌC KHO TRI THỨC] ───► [4. CHÀO & XÁC NHẬN SẴN SÀNG]
+  [1. NẠP QUY TẮC NỀN TẢNG] ──► [2. NẠP CONTEXT & NHẬT KÝ] ──► [3. NẠP KHO TRI THỨC] ──► [4. BÁO CÁO TIẾP QUẢN]
 ```
 
-* **Bước 1: Đọc thư mục nguyên tắc (`agent_rules/`)**
-  * Đọc `01_CORE_OPERATING_PRINCIPLES.md` để nắm vững phong cách sư phạm gợi mở ("cho cần câu").
-  * Đọc `02_KNOWLEDGE_LOGGING_AND_GIT_SYNC.md` để nắm nghĩa vụ ghi chép nhật ký và push Git.
-* **Bước 2: Đọc bối cảnh và lịch sử gần nhất (`agent_workspace/`)**
-  * Đọc `PROJECT_CONTEXT.md` để biết hiện trạng phần cứng và phần mềm.
-  * Đọc 3 mục cuối cùng trong `WORK_LOG.md` để biết phiên trước mentee và Agent trước đã dừng lại ở đâu, còn tồn đọng việc gì.
-* **Bước 3: Đọc kho kinh nghiệm tích lũy (`docs/EXPERIENCE_KNOWLEDGE_BASE.md`)**
-  * Nắm rõ các lỗi phần cứng/phần mềm mà mentee đã từng gặp và cách đã giải quyết.
-* **Bước 4: Chào mentee và tóm tắt ngắn gọn trạng thái tiếp quản**
-  * Xuất câu chào thân thiện, tóm tắt 1 câu về việc đã nắm rõ bối cảnh và đề xuất bước hành động tiếp theo dựa trên mục tiêu còn dang dở trong `WORK_LOG.md`.
+* **Bước 1: Nạp quy chuẩn hoạt động (`agent_rules/` và `AGENTS.md`)**
+  * Đọc `01_CORE_OPERATING_PRINCIPLES.md` để nắm phương pháp sư phạm gợi mở (Socratic Method) và tư duy thực chứng.
+  * Đọc `02_KNOWLEDGE_LOGGING_AND_GIT_SYNC.md` để tuân thủ quy trình cập nhật nhật ký và đồng bộ Git.
+* **Bước 2: Nạp hiện trạng và lịch sử kỹ thuật gần nhất (`projects/<ten_project>/workspace/`)**
+  * Đọc `PROJECT_CONTEXT.md` để nắm vững cấu trúc phần cứng, ánh xạ chân tín hiệu và các vấn đề đang theo dõi.
+  * Đọc các mục gần nhất trong `WORK_LOG.md` để xác định chính xác điểm dừng của phiên trước.
+* **Bước 3: Nạp kho kinh nghiệm thực nghiệm (`projects/<ten_project>/docs/EXPERIENCE_KNOWLEDGE_BASE.md`)**
+  * Nắm rõ danh mục các sự cố phần cứng/phần mềm đã được giải quyết để không đưa ra khuyến nghị trùng lặp hoặc mâu thuẫn.
+* **Bước 4: Xác nhận tiếp quản và đề xuất lộ trình làm việc**
+  * Phản hồi ngắn gọn xác nhận đã tiếp nhận đầy đủ ngữ cảnh và đề xuất bước triển khai tiếp theo dựa trên kế hoạch tồn đọng trong `WORK_LOG.md`.
 
 ---
 
-## 2. QUY TẮC BẢO TOÀN TÍNH NHẤT QUÁN CỦA MÃ NGUỒN VÀ TÀI LIỆU
-* **Không đập đi xây lại:** Agent mới không được tự ý xóa bỏ cấu trúc code hoặc cách đặt tên biến/chân GPIO mà các Agent trước đã thống nhất với mentee, trừ khi có yêu cầu tái cấu trúc rõ ràng.
-* **Bảo toàn chú thích (Comments Integrity):** Giữ nguyên các chú thích giải thích nguyên lý đời thường trong code để mentee dễ theo dõi.
-* **Tôn trọng vai trò của Mentor con người:** Mentor con người là cố vấn chuyên môn cao nhất. Mọi định hướng lớn của Mentor đều là chỉ thị ưu tiên số 1 đối với Agent.
+## 2. NGUYÊN TẮC BẢO TOÀN KIẾN TRÚC MÃ NGUỒN VÀ DỮ LIỆU
+* **Bảo toàn cấu trúc (Structural Continuity):** Không tự ý thay đổi quy ước đặt tên biến, cấu trúc hàm hoặc định nghĩa chân GPIO đã thống nhất trong các phiên trước trừ khi có yêu cầu tối ưu hóa cụ thể.
+* **Bảo toàn tính toàn vẹn của chú thích (Comments Integrity):** Giữ nguyên các chú giải kỹ thuật nhằm phục vụ mục tiêu học tập và giải trình bản chất của người học.
+* **Ưu tiên định hướng của Mentor:** Ý kiến và chỉ đạo chuyên môn của Mentor là căn cứ tham chiếu kỹ thuật cao nhất trong toàn bộ hệ thống.
