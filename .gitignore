@@ -1,0 +1,13 @@
+# OS and IDE files
+.DS_Store
+Thumbs.db
+*.tmp
+.vscode/
+.idea/
+
+# Local credentials and secret scripts (prevent accidental token leaks)
+*.token
+*.key
+.env
+*token*
+kich_hoat_dong_bo_github.bat
