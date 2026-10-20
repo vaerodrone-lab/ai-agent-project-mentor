@@ -28,6 +28,7 @@ Kho lưu trữ được xây dựng nhằm thiết lập **môi trường đào 
 ai-agent-project-mentor/
 ├── AGENTS.md                                # Quy tắc nền tảng tự động nạp cho Antigravity 2.0
 ├── README.md                                # Tài liệu tổng quan kiến trúc và hướng dẫn vận hành
+├── kich_hoat_dong_bo_github.bat             # Công cụ tự động kết nối và xác thực GitHub 1-click
 │
 ├── 🧠 ai_agent_methodology/                 # KHUNG PHƯƠNG PHÁP LUẬN DÙNG CHUNG CHO MỌI ĐỀ TÀI
 │   ├── README.md                            # Tổng quan khung phương pháp luận
@@ -44,7 +45,8 @@ ai-agent-project-mentor/
 ├── 📜 agent_rules/                          # BỘ QUY CHUẨN VẬN HÀNH CỦA HỆ THỐNG AGENT
 │   ├── 01_CORE_OPERATING_PRINCIPLES.md      # Nguyên tắc sư phạm gợi mở (Socratic Method)
 │   ├── 02_KNOWLEDGE_LOGGING_AND_GIT_SYNC.md   # Tiêu chuẩn số hóa tri thức và đồng bộ hóa Git
-│   └── 03_MULTI_AGENT_HANDOVER_PROTOCOL.md    # Giao thức bàn giao phiên nghiên cứu giữa các Agent
+│   ├── 03_MULTI_AGENT_HANDOVER_PROTOCOL.md    # Giao thức bàn giao phiên nghiên cứu giữa các Agent
+│   └── MASTER_AGENT_PROMPT.md               # Mẫu câu lệnh khởi tạo đồng bộ Agent
 │
 └── 🚗 projects/                             # KHÔNG GIAN DỰ ÁN THỰC NGHIỆM
     └── smart_parking/                       # Đề tài: Hệ thống Bãi đỗ xe thông minh (ESP32 & IR)
@@ -67,12 +69,19 @@ ai-agent-project-mentor/
 
 ## 🚀 Quy Trình Khởi Động Dành Cho Người Học (Mentee)
 
-1. **Bước 1: Khởi động Workspace trên Google Antigravity**
-   * Khởi chạy Antigravity &rarr; Chọn `File` &rarr; `Open Folder` &rarr; Trỏ đến thư mục `ai-agent-project-mentor`.
+### 📌 Lưu ý quan trọng khi thiết lập thư mục trên máy tính:
+* **Vị trí lưu trữ:** Khuyến nghị đặt tại `D:\projects\ai-agent-project-mentor` hoặc `C:\workspace\ai-agent-project-mentor`. **Tuyệt đối không lưu tại thư mục có dấu tiếng Việt hoặc khoảng trắng** (như Desktop có tên tài khoản tiếng Việt) để tránh lỗi trình biên dịch Arduino IDE và Git.
+* **Kiểm tra cấu trúc giải nén:** Mở thư mục dự án phải thấy trực tiếp tệp `AGENTS.md` và `README.md` (tránh hiện tượng bị lồng 2 tầng thư mục con khi giải nén).
+
+### Các bước bắt đầu phiên làm việc:
+1. **Bước 1: Kích hoạt quyền đồng bộ Git (1-Click)**
+   * Chạy tệp `kich_hoat_dong_bo_github.bat` trong thư mục để tự động xác thực quyền đẩy code lên GitHub.
+2. **Bước 2: Mở Workspace trên Google Antigravity**
+   * Khởi chạy Antigravity &rarr; Chọn `File` &rarr; `Open Folder` &rarr; Trỏ đến **đúng thư mục gốc** `ai-agent-project-mentor`.
    * Antigravity sẽ tự động kích hoạt tệp quy tắc nền tảng `AGENTS.md`.
-2. **Bước 2: Đồng bộ Ngữ cảnh Phiên làm việc**
-   * Sao chép nội dung từ `ai_agent_methodology/TEMPLATES/MASTER_AGENT_INITIALIZE.md` và gửi vào giao diện trò chuyện với Agent để thiết lập ngữ cảnh cho phiên nghiên cứu.
-3. **Bước 3: Ghi nhận Lịch sử và Đồng bộ Git**
+3. **Bước 3: Đồng bộ Ngữ cảnh Phiên làm việc**
+   * Sao chép nội dung từ `ai_agent_methodology/TEMPLATES/MASTER_AGENT_INITIALIZE.md` (hoặc `agent_rules/MASTER_AGENT_PROMPT.md`) và gửi vào giao diện trò chuyện với Agent để thiết lập ngữ cảnh cho phiên nghiên cứu.
+4. **Bước 4: Ghi nhận Lịch sử và Đồng bộ Git**
    * Kết thúc mỗi phiên làm việc, Agent có trách nhiệm hỗ trợ cập nhật kết quả vào `projects/smart_parking/workspace/WORK_LOG.md` và hướng dẫn thực hiện đồng bộ hóa lên GitHub repository.
 
 ---
