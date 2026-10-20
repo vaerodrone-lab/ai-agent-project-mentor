@@ -10,42 +10,49 @@ Dự án này không nhằm mục đích làm hộ đồ án cho sinh viên, mà
 
 ---
 
-## 📂 Cấu Trúc Kho Lưu Trữ
+## 📂 Cấu Trúc Kho Lưu Trữ Chuẩn Hóa
 
 ```
 ai-agent-project-mentor/
-├── README.md                          # Tài liệu tổng quan & hướng dẫn bắt đầu
+├── README.md                                # Tài liệu tổng quan & hướng dẫn bắt đầu
 │
-├── docs/                              # Kho tri thức định hướng tư duy & bản chất
-│   ├── 01_AI_MINDSET_GUIDE.md         # Tư duy & Phương pháp làm việc hiệu quả với AI
-│   ├── 02_ANTIGRAVITY_AGENT_GUIDE.md  # Hướng dẫn sử dụng Google Antigravity 2.0
-│   ├── 03_SMART_PARKING_A_TO_Z.md     # Bản chất kỹ thuật hệ thống bãi xe (5 tầng tư duy)
+├── agent_rules/                             # BỘ NGUYÊN TẮC HOẠT ĐỘNG DÀNH CHO CÁC AGENT
+│   ├── 01_CORE_OPERATING_PRINCIPLES.md      # Triết lý "Cho cần câu", phương pháp Socratic gợi mở
+│   ├── 02_KNOWLEDGE_LOGGING_AND_GIT_SYNC.md # Quy định ghi chép nhật ký & tự động đồng bộ GitHub
+│   ├── 03_MULTI_AGENT_HANDOVER_PROTOCOL.md  # Giao thức bàn giao và tiếp nối giữa các Agent
+│   └── MASTER_AGENT_PROMPT.md               # Mẫu Prompt khởi tạo Agent dùng cho mọi phiên chat mới
+│
+├── docs/                                    # KHO TRI THỨC NỀN TẢNG & KINH NGHIỆM THỰC CHIẾN
+│   ├── 01_AI_MINDSET_GUIDE.md               # Tư duy & Phương pháp làm việc hiệu quả với AI
+│   ├── 02_ANTIGRAVITY_AGENT_GUIDE.md        # Hướng dẫn sử dụng Google Antigravity 2.0
+│   ├── 03_SMART_PARKING_A_TO_Z.md           # Bản chất kỹ thuật hệ thống bãi xe (5 tầng tư duy)
+│   ├── EXPERIENCE_KNOWLEDGE_BASE.md         # Kho kinh nghiệm xử lý lỗi thực chiến (5 lỗi kinh điển)
 │   └── Huong_Dan_Hieu_Ban_Chat_He_Thong_A_Z.pdf # Bản PDF in ấn đẹp, trực quan
 │
-├── firmware/                          # Mã nguồn nhúng & Sơ đồ phần cứng
-│   ├── it.ino                         # Code C++ nạp trên ESP32 (Web Server + FSM)
-│   └── WIRING_PINOUT.md               # Bảng tra cứu chân GPIO & an toàn nguồn
+├── firmware/                                # MÃ NGUỒN VÀ ĐẤU NỐI PHẦN CỨNG
+│   ├── it.ino                               # Code C++ nạp trên ESP32 (Web Server + FSM)
+│   └── WIRING_PINOUT.md                     # Bảng tra cứu chân GPIO & an toàn nguồn
 │
-├── agent_workspace/                   # Không gian tương tác cho AI Agent trên Antigravity
-│   ├── AGENT_INSTRUCTIONS.md          # Bộ quy tắc bắt buộc cho Agent (Socratic Mentor)
-│   ├── PROJECT_CONTEXT.md             # Bối cảnh hiện trạng, bug tracking & roadmap
-│   └── WORK_LOG.md                    # Nhật ký tiến độ nghiên cứu & làm việc liên tục
+├── agent_workspace/                         # KHÔNG GIAN TƯƠNG TÁC CHO AGENT TRÊN MÁY MENTEE
+│   ├── AGENT_INSTRUCTIONS.md                # Bộ quy tắc bắt buộc cho Agent khi chạy trên máy
+│   ├── PROJECT_CONTEXT.md                   # Bối cảnh hiện trạng, bug tracking & roadmap
+│   └── WORK_LOG.md                          # Nhật ký tiến độ nghiên cứu & làm việc liên tục
 │
-└── assets/                            # Hình ảnh sa bàn thực nghiệm & tài liệu mô hình
-    └── prototype.jpg                  # Ảnh thực tế mô hình bãi đỗ xe
+└── assets/                                  # HÌNH ẢNH SA BÀN THỰC ĐỊA
+    └── prototype.jpg                        # Ảnh thực tế mô hình bãi đỗ xe
 ```
 
 ---
 
-## 🚀 Hướng Dẫn Dành Cho Mentee: Bắt Đầu Trong 3 Bước
+## 🚀 Hướng Dẫn Khởi Tạo Nhanh Cho Mentee (Trong 3 Bước)
 
-1. **Bước 1: Cài đặt và mở dự án trên Google Antigravity**
-   * Mở Antigravity trên laptop &rarr; `File` &rarr; `Open Folder` &rarr; Chọn thư mục dự án này.
-2. **Bước 2: Kích hoạt Agent trợ lý**
-   * Trong khung chat của Antigravity, gõ:
-     > *"Chào Agent! Mình là Mai Uyên. Mình vừa mở dự án Smart Parking. Bạn hãy đọc file `agent_workspace/AGENT_INSTRUCTIONS.md` và `agent_workspace/PROJECT_CONTEXT.md` để nắm bối cảnh, sau đó hướng dẫn mình tiếp tục nhé!"*
+1. **Bước 1: Mở thư mục dự án trên Google Antigravity**
+   * Mở Antigravity trên laptop &rarr; `File` &rarr; `Open Folder` &rarr; Chọn thư mục `ai-agent-project-mentor`.
+2. **Bước 2: Kích hoạt Agent bằng Mẫu Prompt Chuẩn**
+   * Mở file `agent_rules/MASTER_AGENT_PROMPT.md`, copy toàn bộ nội dung và dán vào khung chat của Antigravity.
+   * Agent sẽ tự động đọc các nguyên tắc, đồng bộ lịch sử và hướng dẫn bạn bước tiếp theo.
 3. **Bước 3: Tự động ghi chép nhật ký & Đồng bộ Git**
-   * Sau mỗi buổi làm việc cùng Mentor hoặc tự học với Agent, Agent sẽ tự động ghi chép vào `agent_workspace/WORK_LOG.md` và hướng dẫn bạn đẩy code lên GitHub.
+   * Sau mỗi buổi làm việc cùng Mentor hoặc tự học với Agent, Agent sẽ tự động ghi chép vào `agent_workspace/WORK_LOG.md` và hướng dẫn bạn đẩy code lên GitHub repo.
 
 ---
 
