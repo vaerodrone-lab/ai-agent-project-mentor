@@ -32,6 +32,7 @@ ai-agent-project-mentor/
 │
 ├── 🧠 ai_agent_methodology/                 # KHUNG PHƯƠNG PHÁP LUẬN DÙNG CHUNG CHO MỌI ĐỀ TÀI
 │   ├── README.md                            # Tổng quan khung phương pháp luận
+│   ├── 00_THEORETICAL_FOUNDATIONS_RESEARCH.md # Báo cáo nghiên cứu: Khoa học nhận thức, Tâm lý học & Sư phạm AI
 │   ├── 01_AI_COLLABORATION_MINDSET.md       # Tư duy cộng tác: Mô hình đối tác tư duy (Co-thinker)
 │   ├── 02_PROMPT_ENGINEERING_FOR_STUDENTS.md   # Kỹ thuật xây dựng câu lệnh kỹ thuật chuẩn CTCO
 │   ├── 03_ANTIGRAVITY_2.0_MASTERY_GUIDE.md    # Hướng dẫn khai thác môi trường lập trình tự hành

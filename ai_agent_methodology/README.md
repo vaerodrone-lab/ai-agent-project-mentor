@@ -1,7 +1,7 @@
 # KHUNG PHƯƠNG PHÁP LUẬN HỌC TẬP & NGHIÊN CỨU CÙNG AI AGENT (AI AGENT METHODOLOGY FRAMEWORK)
 
 > **Mục tiêu:** Đây là bộ tài liệu phương pháp luận **chuẩn hóa dùng chung cho mọi học phần và đồ án kỹ thuật liên ngành** (IoT, Hệ thống nhúng, Lập trình ứng dụng, Tự động hóa, Đồ án tốt nghiệp...).  
-> Người học có thể tích hợp thư mục `ai_agent_methodology/` này vào bất kỳ dự án nào trong tương lai để thiết lập môi trường cộng tác kỹ thuật cùng AI.
+> Người học và Cố vấn có thể tích hợp thư mục `ai_agent_methodology/` này vào bất kỳ dự án nào trong tương lai để thiết lập môi trường cộng tác kỹ thuật cùng AI.
 
 ---
 
@@ -11,6 +11,7 @@
 ai_agent_methodology/
 ├── README.md                                # Tổng quan kiến trúc phương pháp luận
 │
+├── 00_THEORETICAL_FOUNDATIONS_RESEARCH.md   # Báo cáo nghiên cứu: Khoa học nhận thức, Tâm lý học & Sư phạm AI
 ├── 01_AI_COLLABORATION_MINDSET.md           # Tư duy cộng tác: Mô hình đối tác tư duy (Co-thinker)
 ├── 02_PROMPT_ENGINEERING_FOR_STUDENTS.md    # Kỹ thuật xây dựng câu lệnh kỹ thuật chuẩn CTCO
 ├── 03_ANTIGRAVITY_2.0_MASTERY_GUIDE.md      # Hướng dẫn khai thác môi trường lập trình tự hành
